@@ -1,7 +1,32 @@
-remote_theme: jekyll/minima
-plugins:
-  - jekyll-remote-theme
-  - jekyll-mermaid
+# Site Settings
+title: Blockchain for dummies
+description: Blockchain for dummies
+theme: minima  # A simple and clean Jekyll theme
 
+# Markdown Parser and Highlighter
+markdown: kramdown
+kramdown:
+  input: GFM  # Support GitHub Flavored Markdown
+  math_engine: mathjax  # Enable MathJax for equations
+  syntax_highlighter: rouge
+
+# Highlighter Settings
+
+gist:
+  noscript: false  # Allow JavaScript in embedded Gists
+
+# Plugins (if you're using any)
+plugins:
+  - jekyll-feed
+
+# Build Settings
+lsi: false  # Disable Latent Semantic Indexing
+safe: true   # Enable safe mode for security
+source: .   # Use the root directory as the source
+incremental: false  # Disable incremental builds
+highlighter: rouge
+
+# Mermaid Configuration
 mermaid:
-  src: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.10.2/mermaid.min.js'
+  # Customize Mermaid configuration as needed (see Mermaid docs for options)
+  theme: 'default'
