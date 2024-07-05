@@ -3,6 +3,7 @@
 
 ## Transaction & Block
 
+
 ```mermaid
 graph LR
     subgraph TransactionData["Transaction Data"]
@@ -44,6 +45,11 @@ graph LR
     BlockHeader --> Nonce["Nonce"]
 ```
 
+- **Transaction**: A digital record of value transfer between two parties (sender and recipient) with a specific amount. It's signed with the sender's private key and verified by the network using their public key.
+
+- **Block**: A collection of verified transactions grouped together, along with a header containing metadata (e.g., timestamp, previous block's hash).
+
+
 ## Miner & Node & Wallet
 
 ```mermaid
@@ -84,6 +90,12 @@ graph LR
 
 ```
 
+- **Miner**: Miners solve complex puzzles to add new blocks to the blockchain, ensuring its security and earning rewards in the process.
+
+- **Node**: Nodes maintain copies of the blockchain, validate transactions, and relay information across the network.
+
+- **Wallet**:  Wallets store users' private keys (used for signing transactions) and public keys (used for receiving transactions), allowing them to interact with the blockchain.
+
 ## Hashrate
 
 ```mermaid
@@ -108,6 +120,9 @@ graph LR
     HashRate -- "Indicates" --> Security["Network Security"]
     style Security fill:#9673A6,stroke:#E1D5E7
 ```
+
+**Bitcoin Hashrate** measures the total computing power miners use to secure the network, currently at 614.42 EH/s. A higher hashrate enhances security by making it harder for bad actors to control the network. It also influences mining difficulty, ensuring consistent block creation times.
+
 ## ETH (proof of stake)
 
 ```mermaid
@@ -148,6 +163,9 @@ graph LR
     
 
 ```
+
+**POS (proof of stake)**: stake ETH to become validators. Validators are randomly selected to propose new blocks, with others attesting to their validity. Correct validators earn rewards, while incorrect ones are penalized. This replaces mining, making Ethereum more scalable and eco-friendly.
+
 ## Restaking
 
 ```mermaid
@@ -185,6 +203,10 @@ RestakingContract -- "Provides" --> AdditionalRewards["Additional Rewards"]
 Validator -- "Earns" --> StakingRewards["Staking Rewards (ETH)"]
 
 ```
+
+
+**Restaking** : allows Ethereum validators to use their staked ETH to secure additional protocols, like EigenLayer, beyond the main Ethereum network. This increases security for multiple protocols and enables validators to earn additional rewards. Validators' staked ETH is verified and utilized across different applications, enhancing capital efficiency and network robustness.
+
 ## Smart Contracts
 
 ```mermaid
@@ -236,6 +258,9 @@ graph LR
     EventBased --> Functions
 
 ```
+
+**Smart contract**: A smart contract is a self-executing contract with the terms directly written into code on a blockchain. It automatically enforces and executes the terms of an agreement when predefined conditions are met. This eliminates the need for intermediaries, reducing costs and enhancing security. Smart contracts are commonly used in various applications, including finance, real estate, and supply chain management.
+
 ### NFT (Non-Fungible Token)
 
 ```mermaid
@@ -289,6 +314,8 @@ graph LR
     BurnCall --> Functions
 
 ```
+
+**An NFT (Non-Fungible Token)** is a unique digital asset represented by a smart contract. The smart contract contains code that defines state variables like token metadata and ownership, and functions for minting, transferring, and burning NFTs. Creators can mint new NFTs, owners can transfer them, and events like transfers and approvals are logged on the blockchain. Participants such as creators, buyers, and sellers interact with the NFT smart contract to manage the lifecycle of NFTs, ensuring transparency and security in ownership.
 ###  Lending and Borrowing
 
 ```mermaid
@@ -342,6 +369,46 @@ graph LR
     RepayCall --> Functions
 
 ```
+
+**Lenders** deposit funds into a smart contract to earn interest. **Borrowers** take out loans by using collateral and paying interest. Smart contracts manage balances, debts, and ensure transparent transactions. Lenders can withdraw their funds, and borrowers can repay loans through specific function calls. This system enhances accessibility and efficiency in financial services without intermediaries.
+## ETH VM ( Virtual Machine)
+
+This is a virtual computer that runs on the Ethereum network. It's responsible for executing smart contracts.
+
+```mermaid
+graph LR
+    subgraph EVM["Ethereum Virtual Machine (EVM)"]
+        style EVM fill:#F2F2F2,stroke:#666666
+        Bytecode["Bytecode<br/>(Smart Contract Instructions)"]
+        style Bytecode fill:#FFF2CC,stroke:#D6B656
+        EVMRuntime["EVM Runtime Environment"]
+        style EVMRuntime fill:#C2E0C6,stroke:#5FB483
+        Storage["Storage<br/>(Persistent Data)"]
+        style Storage fill:#E1D5E7,stroke:#9673A6
+        Memory["Memory<br/>(Temporary Data)"]
+        style Memory fill:#D5E8D4,stroke:#82B366
+        Stack["Stack<br/>(Computation)"]
+        style Stack fill:#FFDDCC,stroke:#E69966
+    end
+
+    subgraph External["External"]
+        Blockchain["Ethereum Blockchain"]
+        style Blockchain fill:#F0F0F0,stroke:#888888
+    end
+
+    Bytecode -- "Executes" --> EVMRuntime
+    EVMRuntime -- "Reads/Writes" --> Storage
+    EVMRuntime -- "Reads/Writes" --> Memory
+    EVMRuntime -- "Uses" --> Stack
+    EVMRuntime -- "Interacts With" --> Blockchain
+
+    Blockchain -- "Stores" --> Bytecode
+    Blockchain -- "Provides" --> Gas["Gas (Execution Fee)"]
+    Gas --> EVMRuntime
+
+```
+
+
 ## TVL (Total Value Locked)
 
 ```mermaid
@@ -406,6 +473,7 @@ graph LR
     Checkpoint --> ParentBlock2
 ```
 
+
 ### Rollup
 
 ```mermaid
@@ -434,6 +502,7 @@ graph LR
     OptimisticRollups --> RollupChain
     ZKRollups --> RollupChain
 ```
+
 
 ## Sharding
 
