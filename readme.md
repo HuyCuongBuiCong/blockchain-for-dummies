@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 # BLOCKCHAIN FOR DUMMIES
 
 ## Transaction - Block
