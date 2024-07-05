@@ -1,8 +1,7 @@
-# CRYPTO EXPLORER 
+# BLOCKCHAIN FOR DUMMIES
 
 
 ## Transaction - Block
-
 
 ```mermaid
 graph LR
