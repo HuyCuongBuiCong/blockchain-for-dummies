@@ -1,7 +1,7 @@
 # CRYPTO EXPLORER 
 
 
-## Transaction & Block
+## Transaction - Block
 
 
 ```mermaid
@@ -50,7 +50,7 @@ graph LR
 - **Block**: A collection of verified transactions grouped together, along with a header containing metadata (e.g., timestamp, previous block's hash).
 
 
-## Miner & Node & Wallet
+## Miner - Node - Wallet
 
 ```mermaid
 graph LR
@@ -449,6 +449,105 @@ graph TD
 
 ```
 
+## Total/Locked/Circulating Supply
+
+```mermaid
+graph
+    subgraph TotalSupply["Total Supply"]
+        style TotalSupply fill:#FFF2CC,stroke:#D6B656
+        AllCoins["All coins/tokens ever created"]
+    end
+
+    subgraph CirculatingSupply["Circulating Supply"]
+        style CirculatingSupply fill:#C2E0C6,stroke:#5FB483
+        AvailableCoins["Coins/tokens available<br/>for trading and use"]
+        
+    end
+    
+    subgraph LockedSupply["Locked Supply"]
+        style LockedSupply fill:#E1D5E7,stroke:#9673A6
+        TeamHoldings["Tokens held by the project team/investors"]
+        Vesting["Tokens locked in vesting schedules"]
+        Reserve["Tokens held in reserve funds"]
+    end
+
+    TotalSupply --> LockedSupply
+    TotalSupply --> CirculatingSupply
+
+    subgraph Factors["Factors Affecting Circulating Supply"]
+        style Factors fill:#D4EDDA,stroke:#4CAF50
+        NewIssuance["New Issuance (Mining/Minting)"]
+        CoinBurn["Coin Burning"]
+        MarketSentiment["Market Sentiment"]
+    end
+
+    NewIssuance --> CirculatingSupply
+    CoinBurn --> CirculatingSupply
+    MarketSentiment --> CirculatingSupply
+    CirculatingSupply -- "Impacts" --> MarketCap["Market Capitalization<br/>(Price x Circulating Supply)"]
+    CirculatingSupply -- "Impacts" --> CoinPrice["Coin/Token Price"]
+
+```
+- **Total Supply**: The maximum number of coins or tokens that will ever exist for a particular cryptocurrency. This number is often fixed or predetermined.
+
+- **Locked Supply**:  The portion of the total supply that is not currently available for trading or use. This includes tokens held by the project team, investors, or in reserve funds, often subject to vesting schedules (gradual release over time).
+
+- **Circulating Supply**:  The number of coins or tokens that are currently available and actively traded on the market. This is the supply that directly impacts the market dynamics of the cryptocurrency.
+
+## TPS ( Transactions Per Second)
+
+```mermaid
+graph 
+    TPS["Transactions Per Second (TPS)"]
+    style TPS fill:#F2F2F2,stroke:#666666
+
+    subgraph Factors["Factors Influencing TPS"]
+        style Factors fill:#D4EDDA,stroke:#4CAF50
+        BlockSize["Block Size"]
+        style BlockSize fill:#FFF9E6,stroke:#F9EBC8
+        BlockTime["Block Time"]
+        style BlockTime fill:#FFF9E6,stroke:#F9EBC8
+        Consensus["Consensus Mechanism"]
+        style Consensus fill:#FFF9E6,stroke:#F9EBC8
+        TxComplexity["Transaction Complexity"]
+        style TxComplexity fill:#FFF9E6,stroke:#F9EBC8
+    end
+
+    subgraph Benefits["Benefits of High TPS"]
+        style Benefits fill:#C2E0C6,stroke:#5FB483
+        Scalability["Scalability"]
+        LowFees["Low Fees"]
+        FastTransactions["Fast Transactions"]
+        BetterUX["Better User Experience"]
+    end
+
+    subgraph Drawbacks["Drawbacks of High TPS"]
+        style Drawbacks fill:#F2DEDE,stroke:#D9534F
+        Centralization["Centralization Risk"]
+        Security["Potential Security Risks"]
+        HighCosts["Higher Costs"]
+        DDOSRisk["DDoS Attack Risk"]
+    end
+
+    subgraph Examples["Examples of TPS in Blockchains"]
+        style Examples fill:#E1D5E7,stroke:#9673A6
+        Bitcoin["Bitcoin (BTC) ~4-7 TPS"]
+        Ethereum["Ethereum (ETH) ~15-45 TPS"]
+        Solana["Solana (SOL) ~50,000 TPS (theoretical)"]
+    end
+
+    TPS --> Benefits
+    TPS --> Drawbacks
+    BlockSize --> TPS
+    BlockTime --> TPS
+    Consensus --> TPS
+    TxComplexity --> TPS
+    TPS --> Examples
+
+```
+**TPS**: measures a blockchain's transaction processing speed, influenced by block size, time, consensus, and complexity.
+High TPS offers scalability and fast transactions, but can risk security and decentralization.
+
 ## Layer 2
 
 ```mermaid
@@ -472,8 +571,6 @@ graph LR
     ChildBlock3 --> Checkpoint["Checkpoint"]
     Checkpoint --> ParentBlock2
 ```
-
-
 ### Rollup
 
 ```mermaid
