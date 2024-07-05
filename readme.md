@@ -1,6 +1,5 @@
 # BLOCKCHAIN FOR DUMMIES
 
-
 ## Transaction - Block
 
 ```mermaid
@@ -645,3 +644,9 @@ graph LR
         ShardBlock5 --> ShardBlock6
     end
 ```
+
+- **Beacon Chain** (Coordinator): This is the main chain that manages the entire sharded network. It assigns validators to different shard chains and ensures consensus across the network.
+
+- **Shard Chains** (Parallel Processing): These are smaller chains that run in parallel, each processing a portion of the network's transactions and state. This parallel processing significantly increases the overall transaction throughput of the blockchain.
+
+- **Shard Blocks**: Blocks on individual shard chains contain transactions and data relevant to that specific shard.
