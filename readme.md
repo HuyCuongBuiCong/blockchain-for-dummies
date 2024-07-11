@@ -191,7 +191,29 @@ graph LR
     style Security fill:#9673A6,stroke:#E1D5E7
 ```
 
-**Bitcoin Hashrate** measures the total computing power miners use to secure the network, currently at 614.42 EH/s. A higher hashrate enhances security by making it harder for bad actors to control the network. It also influences mining difficulty, ensuring consistent block creation times.
+**614.42 EH/s**: This means that the combined computational power of all the miners in the Bitcoin network is performing 614.42 quintillion (614,420,000,000,000,000,000) hash operations every second. A higher hashrate enhances security by making it harder for bad actors to control the network. It also influences mining difficulty, ensuring consistent block creation times.
+
+## Block Time
+
+```mermaid
+graph TD
+subgraph NetworkFactors["Network Factors"]
+    NetworkCongestion["Network Congestion"] -->|Increases| BlockTime["Block Time"]
+    MiningDifficulty["Mining Difficulty"] -->|Adjusts| BlockTime
+    ConsensusMechanism["Consensus Mechanism"] -->|Determines| BlockTime
+end
+
+    BlockTime["Block Time in Blockchain"] -->|Measured in| measurement["Measured in seconds or minutes"]
+    BlockTime -->|Significance| significance["Determines how quickly transactions are confirmed"]
+    BlockTime -->|Impact| impact["Influences network security, throughput, mining rewards, and decentralization"]
+
+style NetworkFactors stroke:#333,stroke-width:2px
+style BlockTime fill:#ff9,stroke:#333,stroke-width:2px
+```
+
+Block time is the average time for a blockchain network to create a new block. Shorter block times mean faster confirmations but can impact security and decentralization. Bitcoin takes roughly 10 minutes, while Solana can achieve 400-800 milliseconds. Block time is affected by network congestion, mining difficulty, and the consensus mechanism used.
+
+See [ETH Block Time](https://etherscan.io/chart/blocktime)
 
 ## ETH (proof of stake)
 
