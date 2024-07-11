@@ -1,9 +1,14 @@
 ---
-layout: default
-title: Home
+title: Blockchain for Dummies
+categories: [tech]
+date: 2024-07-06 08:00:00
+image: "/assets/images/blockchain-for-dummies.png"
+tags: [blockchain]
 ---
 
-# BLOCKCHAIN FOR DUMMIES
+I am not a blockchain expert, but I have been learning about blockchain technology and its applications. I have created some diagrams to help me understand the concepts better. I hope these diagrams can help you too.
+
+
 
 ## Transaction - Block
 
@@ -48,7 +53,8 @@ graph LR
     BlockHeader --> Nonce["Nonce"]
 ```
 
-- **Transaction**: A digital record of value transfer between two parties (sender and recipient) with a specific amount. It's signed with the sender's private key and verified by the network using their public key.
+- **Transaction**: A digital record of value transfer between two parties (sender and recipient) with a specific amount. It's signed with the sender's private key and verified by the network using their public key. [ethereum's doc](https://ethereum.org/en/developers/docs/transactions/)
+
 
 - **Block**: A collection of verified transactions grouped together, along with a header containing metadata (e.g., timestamp, previous block's hash).
 
@@ -98,6 +104,67 @@ graph LR
 - **Node**: Nodes maintain copies of the blockchain, validate transactions, and relay information across the network.
 
 - **Wallet**:  Wallets store users' private keys (used for signing transactions) and public keys (used for receiving transactions), allowing them to interact with the blockchain.
+##  Immutability and Consensus
+
+```mermaid
+graph TD
+        block1["Block 1"]
+        block2["Block 2"]
+        block3["Block 3"]:::invalid
+        block4["Block 4"]:::invalid
+        block5["Block 5"]:::invalid
+
+        block1 -->|Hash Link| block2
+        block2 -->|Hash Link| block3
+        block3 -->|Hash Link| block4
+        block4 -->|Hash Link| block5
+    
+    block2 -- "Data Change" --> invalidBlock2["Invalid Block 2"]
+    invalidBlock2 -.-> |"Invalidates"| block3
+    invalidBlock2 -.-> |"Invalidates"| block4
+    invalidBlock2 -.-> |"Invalidates"| block5
+    classDef invalid fill:#f96
+
+```
+
+**Immutability**:This means that once a block of data is added to the blockchain, it is extremely difficult to alter or remove. This immutability is crucial for maintaining trust and security in the network. Each block in a blockchain contains a unique cryptographic hash that is calculated based on the block's contents and the hash of the previous block. If you change any data within a block, its hash changes, invalidating all subsequent blocks in the chain.
+
+```mermaid
+graph LR
+    subgraph Blockchain["Blockchain"]
+        style Blockchain fill:#ff9,stroke:#333,stroke-width:2px
+        Block1["Block 1"]
+        Block2["Block 2"]
+        Block3["Block 3"]
+
+        Block1 --> |"Hash Link"| Block2
+        Block2 --> |"Hash Link"| Block3
+    end
+
+    Block2 -- "Attempted Data Change" -->  Disagreement["Disagreement with\nNetwork Consensus"]
+
+```
+
+**Consensus**: Changes to the blockchain require the agreement (consensus) of the majority of the network's nodes. To modify a historical block, you'd need to convince the majority of nodes to rewrite the entire chain from that point onwards, which is computationally infeasible and extremely unlikely.
+
+
+
+## P2P (Peer-to-Peer) Network
+
+A peer-to-peer (P2P) network is a type of network architecture where all participants (devices or computers) have equal status and capabilities.  Unlike traditional client-server models, there's no central authority governing the network. Instead, each participant, known as a node, directly communicates and shares resources with other nodes.
+
+```mermaid
+graph TD
+    subgraph P2PBlockchainNetwork["Peer-to-Peer Blockchain Network"]
+        A[Node 1]
+        B[Node 2]
+        C[Node 3]
+        A <--"Share Ledger Data & Validate Transactions"--> B
+        A <--> C
+        B <--> C
+    end
+```
+
 
 ## Hashrate
 
@@ -168,6 +235,39 @@ graph LR
 ```
 
 **POS (proof of stake)**: stake ETH to become validators. Validators are randomly selected to propose new blocks, with others attesting to their validity. Correct validators earn rewards, while incorrect ones are penalized. This replaces mining, making Ethereum more scalable and eco-friendly.
+
+## Gas Fees
+Gas in the Ethereum network is a unit that measures the computational work required to execute transactions or smart contracts. Each operation on the Ethereum Virtual Machine (EVM) requires a certain amount of gas, which must be paid for in Ether (ETH). Gas ensures that transactions and contract executions are fairly priced according to their resource consumption. Users specify a gas limit and a gas price for their transactions; if the gas limit is exceeded, the transaction fails but the gas used is still deducted. This mechanism prevents network abuse and incentivizes efficient code execution. 
+
+```mermaid
+graph TD
+    subgraph UserA["Bob's Account"]
+        style UserA fill:#9f9,stroke:#333,stroke-width:2px
+        BalanceA["1.0042 ETH"]
+    end
+
+        style Blockchain fill:#ff9,stroke:#333,stroke-width:2px
+        Miner["Miner/Validator"]
+    
+    subgraph UserB["Alice's Account"]
+        style UserB fill:#9f9,stroke:#333,stroke-width:2px
+        BalanceB["0 ETH"]
+    end
+
+    UserA --"Sends 1 ETH + 0.0042 ETH Fee"--> Blockchain
+    Blockchain --"Transfers 1 ETH"--> UserB
+    Blockchain --"Pays 0.00021 ETH Tip"--> Miner
+    Blockchain --"Burns 0.00399 ETH"--> LostETH["0.00399 ETH"]
+
+```
+
+- Transaction Cost: Sending ETH has a base cost of 21,000 units of gas.
+- Gas Price: Bob sets a gas price of 200 gwei (190 gwei base fee + 10 gwei tip).
+- Total Fee: The total fee Bob pays is 21,000 gas * 200 gwei/gas = 4,200,000 gwei (or 0.0042 ETH).
+- Bob's account is debited 1.0042 ETH (1 ETH for Alice + 0.0042 ETH fee).
+- Alice's account is credited 1 ETH.
+0.00399 ETH is burned (removed from circulation).
+- The miner receives 0.00021 ETH as a tip.
 
 ## Stablecoins
 
@@ -308,6 +408,53 @@ graph LR
 ```
 
 **Smart contract**: A smart contract is a self-executing contract with the terms directly written into code on a blockchain. It automatically enforces and executes the terms of an agreement when predefined conditions are met. This eliminates the need for intermediaries, reducing costs and enhancing security. Smart contracts are commonly used in various applications, including finance, real estate, and supply chain management.
+
+## Dapp (Decentralized Application)
+
+```mermaid
+flowchart TB
+    SmartContract["Smart Contract: MyToken"]
+    Blockchain["Blockchain"]
+    TransactionLog["Transaction Log (Blockchain)"]
+    EventData["Event Data (Blockchain)"]
+    BalancesData["Balances Data (Blockchain)"]
+    dApp["Decentralized Application"]
+    Web3["Web3.js/Ethers.js"]
+
+    SmartContract -->|Deploys to| Blockchain
+    SmartContract -->|Emits Event| TransactionLog
+    SmartContract -->|Reads/Writes| BalancesData
+    Blockchain -->|Stores| TransactionLog
+    Blockchain -->|Stores| EventData
+    Blockchain -->|Stores| BalancesData
+    dApp -->|Interacts with| Web3
+    Web3 -->|Reads Event Data| EventData
+    Web3 -->|Reads/Writes| BalancesData
+    Web3 -->|Listens for Events| TransactionLog
+
+    subgraph BlockchainSection[" "]
+        Blockchain
+        TransactionLog
+        EventData
+        BalancesData
+    end
+
+    classDef blockchain fill:#ff9,stroke:#333,stroke-width:2px;
+    classDef contract fill:#99f,stroke:#333,stroke-width:2px;
+    classDef external fill:#9f9,stroke:#333,stroke-width:2px;
+
+    Blockchain:::blockchain
+    TransactionLog:::blockchain
+    EventData:::blockchain
+    BalancesData:::blockchain
+    dApp:::external
+    Web3:::external
+    SmartContract:::contract
+
+```
+
+Decentralized applications (dApps) are software applications that run on a blockchain or peer-to-peer network of computers instead of a single computer. They are open-source, operate autonomously, and have their data stored immutably on a blockchain. dApps are often used to create financial services, social networks, games, and other applications that don't require a central authority or intermediary.
+Examples of dApps : Uniswap, Compound, Aave, MakerDAO etc.
 
 ## NFT (Non-Fungible Token)
 
@@ -671,7 +818,7 @@ graph LR
     ChildBlock3 --> Checkpoint["Checkpoint"]
     Checkpoint --> ParentBlock2
 ```
-## Rollup
+### Rollup
 
 ```mermaid
 graph LR
