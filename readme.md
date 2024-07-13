@@ -263,23 +263,24 @@ Gas in the Ethereum network is a unit that measures the computational work requi
 
 ```mermaid
 graph TD
-    subgraph UserA["fa:fa-user Bob's Account"]
+    subgraph UserA["<i class='fa fa-user'></i> Bob's Account"]
         style UserA fill:#9f9,stroke:#333,stroke-width:2px
-        BalanceA["fa:fa-money-bill-wave 1.0042 ETH"]
+        BalanceA["<i class='fa fa-money-bill-wave'></i> 1.0042 ETH"]
     end
 
     style Blockchain fill:#ff9,stroke:#333,stroke-width:2px
-    Miner["fa:fa-gavel Miner/Validator"]
+    Miner["<i class='fa fa-gavel'></i> Miner/Validator"]
     
-    subgraph UserB["fa:fa-user Alice's Account"]
+    subgraph UserB["<i class='fa fa-user'></i> Alice's Account"]
         style UserB fill:#9f9,stroke:#333,stroke-width:2px
-        BalanceB["fa:fa-money-bill-wave 0 ETH"]
+        BalanceB["<i class='fa fa-money-bill-wave'></i> 0 ETH"]
     end
 
-    UserA --"fa:fa-arrow-right Sends 1 ETH + 0.0042 ETH Fee"--> Blockchain
-    Blockchain --"fa:fa-arrow-right Transfers 1 ETH"--> UserB
-    Blockchain --"fa:fa-coins Pays 0.00021 ETH Tip"--> Miner
-    Blockchain --"fa:fa-fire Burns 0.00399 ETH"--> LostETH["fa:fa-money-bill-wave 0.00399 ETH"]
+    UserA --"<i class='fa fa-arrow-right'></i> Sends 1 ETH + 0.0042 ETH Fee"--> Blockchain
+    Blockchain --"<i class='fa fa-arrow-right'></i> Transfers 1 ETH"--> UserB
+    Blockchain --"<i class='fa fa-coins'></i> Pays 0.00021 ETH Tip"--> Miner
+    Blockchain --"<i class='fa fa-fire'></i> Burns 0.00399 ETH"--> LostETH["<i class='fa fa-money-bill-wave'></i> 0.00399 ETH"]
+
 
 ```
 
