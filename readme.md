@@ -263,23 +263,23 @@ Gas in the Ethereum network is a unit that measures the computational work requi
 
 ```mermaid
 graph TD
-    subgraph UserA["Bob's Account"]
+    subgraph UserA["fa:fa-user Bob's Account"]
         style UserA fill:#9f9,stroke:#333,stroke-width:2px
-        BalanceA["1.0042 ETH"]
+        BalanceA["fa:fa-money-bill-wave 1.0042 ETH"]
     end
 
-        style Blockchain fill:#ff9,stroke:#333,stroke-width:2px
-        Miner["Miner/Validator"]
+    style Blockchain fill:#ff9,stroke:#333,stroke-width:2px
+    Miner["fa:fa-gavel Miner/Validator"]
     
-    subgraph UserB["Alice's Account"]
+    subgraph UserB["fa:fa-user Alice's Account"]
         style UserB fill:#9f9,stroke:#333,stroke-width:2px
-        BalanceB["0 ETH"]
+        BalanceB["fa:fa-money-bill-wave 0 ETH"]
     end
 
-    UserA --"Sends 1 ETH + 0.0042 ETH Fee"--> Blockchain
-    Blockchain --"Transfers 1 ETH"--> UserB
-    Blockchain --"Pays 0.00021 ETH Tip"--> Miner
-    Blockchain --"Burns 0.00399 ETH"--> LostETH["0.00399 ETH"]
+    UserA --"fa:fa-arrow-right Sends 1 ETH + 0.0042 ETH Fee"--> Blockchain
+    Blockchain --"fa:fa-arrow-right Transfers 1 ETH"--> UserB
+    Blockchain --"fa:fa-coins Pays 0.00021 ETH Tip"--> Miner
+    Blockchain --"fa:fa-fire Burns 0.00399 ETH"--> LostETH["fa:fa-money-bill-wave 0.00399 ETH"]
 
 ```
 
