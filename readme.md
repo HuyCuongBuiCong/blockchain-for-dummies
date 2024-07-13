@@ -8,7 +8,7 @@ tags: [blockchain]
 
 I am not a blockchain expert, but I have been learning about blockchain technology and its applications. I have created some diagrams to help me understand the concepts better. I hope these diagrams can help you too.
 
-Full article on [https://kelvin-bz.github.io/](https://kelvin-bz.github.io/)
+Full article on [https://kelvin-bz.github.io/posts/blockchain-for-dummies/](https://kelvin-bz.github.io/posts/blockchain-for-dummies/)
 
 
 ## Transaction - Block
