@@ -1,12 +1,4 @@
----
-title: Blockchain for Dummies
-categories: [tech]
-date: 2024-07-06 08:00:00
-image: "/assets/images/blockchain-for-dummies.png"
-tags: [blockchain]
----
-
-I am not a blockchain expert, but I have been learning about blockchain technology and its applications. I have created some diagrams to help me understand the concepts better. I hope these diagrams can help you too.
+In this article, we will cover the basics of blockchain technology in a simple and easy-to-understand way. Each section start with a simple diagram to explain the concept and then followed by a brief explanation. The good part of diagram is help you to understand the concept in a visual way and of course more questions will come to your mind, find the answers by yourself and making your own research is the best way to learn and memorize the concept.
 
 Full article on [https://kelvin-bz.github.io/posts/blockchain-for-dummies/](https://kelvin-bz.github.io/posts/blockchain-for-dummies/)
 
